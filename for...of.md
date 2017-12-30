@@ -36,7 +36,6 @@ for(var key of Object.keys(student)){  //先获取studentkey的数组，循环�
 }
 ```
 
-
 + for...of不能循环普通的对象，需要通过和Object.keys()搭配使用
 
 ```javascript
@@ -59,7 +58,14 @@ for (e of es6) {
 }
 // TypeError: es6 is not iterable
 ```
-+ 与forEach()不同的是，它可以正确响应break、continue和return语句
++ 与forEach()不同的是，它可以正确响应break、continue和return语句,forEach循环会简洁很多，但是不能break、continue、return
+
+```javascript
+var a = ["a", "b", "c"];
+a.forEach(function(element) {
+  console.log(element);
+});
+```
 + for...of现在浏览器的支持成都还不是很好
 ![](/assets/屏幕快照 2017-12-30 19.27.34.png)
 ![](/assets/屏幕快照 2017-12-30 19.27.19.png)
