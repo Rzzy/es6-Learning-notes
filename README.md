@@ -1,1 +1,1 @@
-dd
+for...of  -   https://rzzy.gitbooks.io/es6/content/for...of.html
