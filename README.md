@@ -1,1 +1,1 @@
-1. (for...of)[https://rzzy.gitbooks.io/es6/content/for...of.html]
+1. (for...of)[https://rzzy.gitbooks.io/es6/content/for...of.html ]
