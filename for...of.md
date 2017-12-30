@@ -8,7 +8,7 @@ aArray.name = 'demo',再分别查看上面写的两个循环：
 
 ```javascript
 for(let index in aArray){
-    console.log(`${aArray[index]}`); //aArray.name也被循环出来了
+    console.log(`${aArray[index]}`); //aArray.name会也被循环出来了
 }
 for(var value of aArray){
     console.log(value);
