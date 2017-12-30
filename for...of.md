@@ -7,12 +7,11 @@ for (variable of iterable) {
     //statements
 }
 ```
-`variable`
+>`variable`
 在每次迭代中，将不同属性的值分配给变量。
 
-`iterable`
+>`iterable`
 可枚举其枚举属性的对象。
-
 
 + 推荐在循环对象属性的时候，使用for...in,在遍历数组的时候的时候使用for...of。
 + for...in循环出的是key，for...of循环出的是value。for...of修复了for...in的缺陷和不足，假设我们往数组添加一个属性name:
