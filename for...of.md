@@ -1,6 +1,19 @@
 ## `for-of`
 >for...of语句在可迭代对象（包括 Array，Map，Set，String，TypedArray，arguments 对象等等）上创建一个迭代循环，调用自定义迭代钩子，并为每个不同属性的值执行语句。
 
+**语法**
+```javascript
+for (variable of iterable) {
+    //statements
+}
+```
+`variable`
+在每次迭代中，将不同属性的值分配给变量。
+
+`iterable`
+可枚举其枚举属性的对象。
+
+
 + 推荐在循环对象属性的时候，使用for...in,在遍历数组的时候的时候使用for...of。
 + for...in循环出的是key，for...of循环出的是value。for...of修复了for...in的缺陷和不足，假设我们往数组添加一个属性name:
 aArray.name = 'demo',再分别查看上面写的两个循环：
@@ -70,19 +83,6 @@ a.forEach(function(element) {
 ![](/assets/屏幕快照 2017-12-30 19.27.19.png)
 
 
-**语法**
-```javascript
-for (variable of iterable) {
-    //statements
-}
-```
-`variable`
-在每次迭代中，将不同属性的值分配给变量。
-
-`iterable`
-可枚举其枚举属性的对象。
-
-for...of循环可以使用的范围包括数组、类似数组的对象（比如arguments对象、DOM NodeList对象）、Set和Map结构、Generator对象，以及字符串
 **示例**
 
 迭代Array
