@@ -3,7 +3,18 @@
 >for...of语句在可迭代对象（包括 Array，Map，Set，String，TypedArray，arguments 对象等等）上创建一个迭代循环，调用自定义迭代钩子，并为每个不同属性的值执行语句。
 
 + 推荐在循环对象属性的时候，使用for...in,在遍历数组的时候的时候使用for...of。
-+ for...in循环出的是key，for...of循环出的是value
++ for...in循环出的是key，for...of循环出的是value。for...of修复了for...in的缺陷和不足，假设我们往数组添加一个属性name:
+aArray.name = 'demo',再分别查看上面写的两个循环：
+
+```javascript
+for(let index in aArray){
+    console.log(`${aArray[index]}`); //aArray.name也被循环出来了
+}
+for(var value of aArray){
+    console.log(value);
+}
+```
+
 + for...of不能循环普通的对象，需要通过和Object.keys()搭配使用
 
 ```javascript
