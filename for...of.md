@@ -14,6 +14,28 @@ for(var value of aArray){
     console.log(value);
 }
 ```
+所以说，作用于数组的for-in循环除了遍历数组元素以外,还会遍历自定义属性。
+
+for...of循环不会循环对象的key，只会循环出数组的value，因此for...of不能循环遍历普通对象,对普通对象的属性遍历推荐使用for...in
+
+如果实在想用for...of来遍历普通对象的属性的话，可以通过和Object.keys()搭配使用，先获取对象的所有key的数组：
+然后遍历：
+```javascript
+var student={
+    name:'wujunchuan',
+    age:22,
+    locate:{
+      country:'china',
+      city:'xiamen',
+      school:'XMUT'
+    }
+}
+for(var key of Object.keys(student)){  //先获取studentkey的数组，循环数组再得到对象值，基本上是多此一举
+    //使用Object.keys()方法获取对象key的数组
+    console.log(key+": "+student[key]);
+}
+```
+
 
 + for...of不能循环普通的对象，需要通过和Object.keys()搭配使用
 
