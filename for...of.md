@@ -1,5 +1,4 @@
-### es6学习笔记
-#### `for-of`
+## `for-of`
 >for...of语句在可迭代对象（包括 Array，Map，Set，String，TypedArray，arguments 对象等等）上创建一个迭代循环，调用自定义迭代钩子，并为每个不同属性的值执行语句。
 
 + 推荐在循环对象属性的时候，使用for...in,在遍历数组的时候的时候使用for...of。
