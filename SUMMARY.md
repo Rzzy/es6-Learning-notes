@@ -1,5 +1,5 @@
 # Summary
 
-* [Introduction](README.md)
+* [directory](README.md)
 * [for...of用法](for...of.md)
 
