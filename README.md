@@ -1,3 +1,10 @@
-# My Awesome Book
+# es6学习笔记
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
+转载：\[dd\]\(https://www.jianshu.com/p/7cd1e5940268\)
+
+
+
+
+
+
+
