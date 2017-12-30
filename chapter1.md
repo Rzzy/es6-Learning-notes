@@ -5,9 +5,33 @@
 + 推荐在循环对象属性的时候，使用for...in,在遍历数组的时候的时候使用for...of。
 + for...in循环出的是key，for...of循环出的是value
 + for...of不能循环普通的对象，需要通过和Object.keys()搭配使用
+
+```javascript
+// for...in循环可以遍历键名，for...of循环会报错。
+var es6 = {
+  edition: 6,
+  committee: "TC39",
+  standard: "ECMA-262"
+};
+
+for (e in es6) {
+  console.log(e);
+}
+// edition
+// committee
+// standard
+
+for (e of es6) {
+  console.log(e);
+}
+// TypeError: es6 is not iterable
+```
++ 与forEach()不同的是，它可以正确响应break、continue和return语句
 + for...of现在浏览器的支持成都还不是很好
 ![](/assets/屏幕快照 2017-12-30 19.27.34.png)
 ![](/assets/屏幕快照 2017-12-30 19.27.19.png)
+
+
 **语法**
 ```javascript
 for (variable of iterable) {
@@ -20,6 +44,7 @@ for (variable of iterable) {
 `iterable`
 可枚举其枚举属性的对象。
 
+for...of循环可以使用的范围包括数组、类似数组的对象（比如arguments对象、DOM NodeList对象）、Set和Map结构、Generator对象，以及字符串
 **示例**
 
 迭代Array
