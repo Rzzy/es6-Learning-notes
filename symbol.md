@@ -1,4 +1,5 @@
 ### 深入解析 ES6：`Symbol`
+
 >引用：[http://bubkoo.com/2015/07/24/es6-in-depth-symbols/](http://bubkoo.com/2015/07/24/es6-in-depth-symbols/)
 
 **Symbol 是什么？**
