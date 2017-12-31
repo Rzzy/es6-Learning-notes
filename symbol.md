@@ -2,7 +2,7 @@
 
 >引用：[http://bubkoo.com/2015/07/24/es6-in-depth-symbols/](http://bubkoo.com/2015/07/24/es6-in-depth-symbols/)
 
-**Symbol 是什么？**
+**`Symbol` 是什么？**
 
 ```javaScript
 typeof Symbol()
@@ -34,3 +34,41 @@ typeof Symbol()
 
 ```
 应该避免这样的强制转换，应该使用 `String(sym)` 或 `sym.toString()` 来转换。
+
+**获取 `Symbol` 的三种方法**
++ `Symbol()` 每次调用时都返回一个唯一的 Symbol。
++ `Symbol.for(string)` 从 `Symbol `注册表中返回相应的 `Symbol`，与上个方法不同的是，`Symbol `注册表中的 `Symbol` 是共享的。也就是说，如果你调用 `Symbol.for("cat")` 三次，都将返回相同的 `Symbol`。当不同页面或同一页面不同模块需要共享 `Symbol` 时，注册表就非常有用。
++ `Symbol.iterator` 返回语言预定义的一些 `Symbol`，每个都有其特殊的用途。
+
+如果你仍不确定 `Symbol` 是否有用，那么接下来的内容将非常有趣，因为我将为你演示 `Symbol` 的实际应用。
+
+**`Symbol` 在 `ES6` 规范中的应用**
++ 可以使用 `Symbol` 来避免代码冲突。
++ 在使用 `iterator` 时，我们解析`for (var item of myArray)` 内部是以调用 `myArray[Symbol.iterator]()` 开始的，这个方法可以使用 `myArray.iterator()` 来代替，但是使用 `Symbol` 的后向兼容性更好。
+
+在 `ES6` 中还有一些地方使用到了 `Symbol`。（这些特性还没有在 `FireFox` 中实现。）
+
++ 使 `instanceof` 可扩展。在 `ES6 `中，`object instanceof constructor` 表达式被标准化为构造函数的一个方法：`constructor[Symbol.hasInstance](object)`，这意味着它是可扩展的。
++ 消除新特性和旧代码之间的冲突。
++ 支持新类型的字符串匹配。在 `ES5` 中，调用 `str.match(myObject)` 时，首先会尝试将 `myObject `转换为 `RegExp `对象。在 `ES6 `中，首先将检查 `myObject `中是否有 `myObject[Symbol.match](str)` 方法，在所有正则表达式工作的地方都可以提供一个自定义的字符串解析方法。
+
+这些用途还比较窄，但仅仅通过我文章中的代码很难看到这些新特性产生的重大影响。JavaScript 的 Symbol 是 PHP 和 Python 中 __doubleUnderscores 的改进版本，标准组织将使用它来为语言添加新特性，而不会对已有代码产生影响。
+
+**兼容性**
+Firefox 36 和 Chrome 38 实现了 Symbol
+
+对于还没有原生支持 Symbol 的浏览器，你可以使用 polyfill，如 core.js，但该 polyfill 实现并不完美，请阅读注意事项。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
