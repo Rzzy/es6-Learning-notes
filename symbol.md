@@ -76,6 +76,78 @@ if (element.isMoving) {
 element.isMoving = true;
 
 ```
+这也有一些潜在的问题，不得不承认这样一个事实：还有其他代码也可能操作该 ODM 元素。
++ 在其他代码中，你创建的属性会被 for-in 或 Object.keys() 枚举出来；
++ 在其他一些库中也许已经使用了同样的方式（在元素上设置了相同的属性），那么这将和你的代码发生冲突，产生不可预计的结果；
++ 其他一些库可能在将来会使用同样的方式，这也会与你的代码发生冲突；
++ 标准委员会可能会为每个元素添加一个 .isMoving() 原生方法，那么你的代码就彻底不能工作了。
+
+当然，对于最后三个问题，你可以选择一个无意义的不会有人会使用到的字符串：
+
+```javaScript
+if (element.__$jorendorff_animation_library$PLEASE_DO_NOT_USE_THIS_PROPERTY$isMoving__) {
+  smoothAnimations(element);
+}
+element.__$jorendorff_animation_library$PLEASE_DO_NOT_USE_THIS_PROPERTY$isMoving__ = true;
+```
+这似乎太不靠谱了，看了让人眼睛痛。
+
+你还可以用加密算法来生成一个几乎唯一的字符串：
+
+```javaScript
+// get 1024 Unicode characters of gibberish
+var isMoving = SecureRandom.generateName();
+...
+if (element[isMoving]) {
+  smoothAnimations(element);
+}
+element[isMoving] = true;
+```
+
+`object[name]` 语法允许我们将任何字符串作为属性名，代码能正常工作，冲突几乎是不可能了，代码看起来也美观多了。
+但是，这回导致糟糕的调试体验，每次使用 `console.log()` 打印出包含该属性的元素时，你回看到一个庞大的垃圾字符串，并且如果还不止一个这样的属性呢？每次刷新后属性名都发生了变化，怎么样使这些属性看起来更加直观呢？
+
+为什么这么难？我们只是为了保存一个小小的标志位。
+
++ 用 Symbol 来解决问题
+
+Symbol 值可以由程序创建，并可以作为属性名，而且不用担心属性名冲突。
+
+```javaScript
+var mySymbol = Symbol();
+```
+
+调用 `Symbol()` 方法将创建一个新的 `Symbol` 类型的值，并且该值不与其它任何值相等。
+与数字和字符串一样，`Symbol` 类型的值也可以作为对象的属性名，正是由于它不与任何其它值相等，对应的属性也不会发生冲突：
+
+```javaScript
+obj[mySymbol] = "ok!";  // guaranteed not to collide
+console.log(obj[mySymbol]);  // ok!
+```
+
+下面是使用 Symbol 来解决上面的问题：
+
+```javaScript
+// create a unique symbol
+var isMoving = Symbol("isMoving");
+...
+if (element[isMoving]) {
+  smoothAnimations(element);
+}
+element[isMoving] = true;
+
+```
+*上面代码需要注意几点：*
+
++ 方法 `Symbol("isMoving")` 中的 `"isMoving"` 字符串被称为 `Symbol `的描述信息，这对调试非常有帮助。可以通过 `console.log(isMoving)` 打印出来，或通过 `isMoving.toString()` 将 `isMoving` 转换为字符串时，或在一些错误信息中显示出来。
++  `element[isMoving]` 访问的是 `symbol-keyed` 属性，除了属性名是 `Symbol` 类型的值之外，与其它属性都一样。
++ 和数组一样，`symbol-keyed` 属性不能通过 `.` 操作符来访问，必须使用方括号的方式。
++ 操作 `symbol-keyed` 属性也非常方便，通过上面代码我们已经知道如何获取和设置 `element[isMoving]` 的值，我们还可以这样使用：`if (isMoving in element)` 或 `delete element[isMoving]`。
++ 另一方面，只有在 `isMoving` 的作用域范围内才可以使用上述代码，这可以实现弱封装机制：在一个模块内创建一些` Symbol`，只有在该模块内部的对象才能使用，而不用担心与其它模块的代码发生冲突。
+
+由于 `Symbol` 的设计初衷是为了避免冲突，当遍历 `JavaScript `对象时，并不会枚举到以 `Symbol` 作为建的属性，比如，`for-in` 循环只会遍历到以字符串作为键的属性，`Object.keys(obj)` 和 `Object.getOwnPropertyNames(obj)` 也一样，但这并不意味着 `Symbol` 为键的属性是不可枚举的：使用 `Object.getOwnPropertySymbols(obj)` 这个新方法可以枚举出来，还有 `Reflect.ownKeys(obj)` 这个新方法可以返回对象中所有字符串和 `Symbol `键。
+
+库和框架的设计者将会发现很多 `Symbol` 的用途，`JavaScript `语言本身也对其有广泛的应用。
 
 **兼容性**
 对于还没有原生支持 Symbol 的浏览器，你可以使用 polyfill，如 [core.js](https://github.com/zloirock/core-js#ecmascript-6-symbols)，但该 polyfill 实现并不完美，请阅读[注意事项](https://github.com/zloirock/core-js#caveats-when-using-symbol-polyfill)。
