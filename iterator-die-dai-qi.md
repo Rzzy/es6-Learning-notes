@@ -33,7 +33,7 @@
 _自定义迭代器_  
 我们可以像下面这样创建自定义的迭代器：
 
-```javascript
+```javaScript
 var myIterable = {}
 myIterable[Symbol.iterator] = function* () {
     yield 1;
@@ -46,7 +46,7 @@ myIterable[Symbol.iterator] = function* () {
 _不符合标准的迭代器_  
 如果一个迭代器 @@iterator 没有返回一个迭代器对象，那么它就是一个不符合标准的迭代器，这样的迭代器将会在运行期抛出异常，甚至非常诡异的 Bug。
 
-```javascript
+```javaScript
 var nonWellFormedIterable = {}
 nonWellFormedIterable[Symbol.iterator] = () => 1
 [...nonWellFormedIterable] // TypeError: [] is not a function
@@ -114,7 +114,7 @@ console.log(iterator.next())
 
 类似数组的对象（存在数值键名和 `length` 属性），可以直接在 `Symbol.iterator` 属性上部署数组的 `Iterator` 接口：
 
-```javascript
+```javaScript
 let iterable = {
   0: 'a',
   1: 'b',
