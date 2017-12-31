@@ -49,6 +49,7 @@ var sampleIterator = {
     }
   }
 }
+
 for (var val of sampleIterator) {
   console.log(val)
 }
