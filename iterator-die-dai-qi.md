@@ -154,8 +154,6 @@ for (var item of iterable) {
   + Promise.all()
   + Promise.race()
   + …
-  
-
 
 
 
