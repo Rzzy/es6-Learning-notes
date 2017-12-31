@@ -44,11 +44,121 @@ string text line 2`);
 // string text line 2"
 
 ```
+**表达式插补**
+在普通字符串中嵌入表达式，必须使用如下语法：
+
+```javaScript
+var a = 5;
+var b = 10;
+console.log("Fifteen is " + (a + b) + " and\nnot " + (2 * a + b) + ".");
+// "Fifteen is 15 and
+// not 20."
+
+```
+现在通过模板字符串，我们可以使用一种更优雅的方式来表示：
+
+```javaScript
+var a = 5;
+var b = 10;
+console.log(`Fifteen is ${a + b} and\nnot ${2 * a + b}.`);
+// "Fifteen is 15 and
+// not 20."
+
+```
+**带标签的模板字符串**
+更高级的形式的模板字面值被标记模板文本。
+标记使您可以分析模板文本功能。
+标记功能的第一个参数包含一个字符串值的数组。
+其余的参数是相关的表达式。
+最后，你的函数可以返回处理好的的字符串 （或者它可以返回完全不同的东西 , 如下例所述）。
+用于该标记的函数的名称可以被命名为任何你想要的东西。
+
+```javaScript
+var person = 'Mike';
+var age = 28;
+
+function myTag(strings, personExp, ageExp) {
+
+  var str0 = strings[0]; // "that "
+  var str1 = strings[1]; // " is a "
+
+  // 在技术上,有一个字符串在
+  // 最终的表达式 (在我们的例子中)的后面,
+  // 但它是空的(""), 所以被忽略.
+  // var str2 = strings[2];
+
+  var ageStr;
+  
+  if (ageExp > 60){
+    ageStr = 'old person';
+  } else {
+    ageStr = 'young person';
+  }
+
+  return str0 + personExp + str1 + ageStr;
+
+}
+
+var output = myTag`that ${ person } is a ${ age }`;
+
+console.log(output);    // that Mike is a young person
+```
+
+```javaScript
+//show函数采用rest参数的写法如下：
+
+let name = '张三',
+
+    age = 20,
+
+    message = show`我来给大家介绍:${name}的年龄是${age}.`;
 
 
+function show(stringArr,...values){
 
+    let output ="";
 
+    let index = 0
 
+    for(;index<values.length;index++){
+
+        output += stringArr[index]+values[index];
+
+    }
+
+    output += stringArr[index];
+
+    return output;
+
+}
+
+message;       //"我来给大家介绍:张三的年龄是20."
+```
+
+正如下面例子所展示的，标签函数并不一定需要返回一个字符串。
+
+```javaScript
+function template(strings, ...keys) {
+  return (function(...values) {
+    var dict = values[values.length - 1] || {};
+    var result = [strings[0]];
+    keys.forEach(function(key, i) {
+      var value = Number.isInteger(key) ? values[key] : dict[key];
+      result.push(value, strings[i + 1]);
+    });
+    return result.join('');
+  });
+}
+
+var t1Closure = template`${0}${1}${0}!`;
+
+t1Closure('Y', 'A');  // "YAY!" 
+
+var t2Closure = template`${0} ${'foo'}!`;
+
+t2Closure('Hello', {foo: 'World'});  // "Hello World!"
+
+```
 
 
 
