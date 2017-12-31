@@ -101,6 +101,59 @@ function Person(){
 
 var p = new Person();
 ```
+**与严格模式的关系**
+鉴于 this 是词法层面上的，严格模式中与 this 相关的规则都将被忽略。
+
+```javascript
+var f = () => {'use strict'; return this};
+f() === window; // 或全局对象
+```
+严格模式的其他规则依然不变.
+
+**通过 call 或 apply 调用**
+由于 this 已经在词法层面完成了绑定，通过 call() 或 apply() 方法调用一个函数时，只是传入了参数而已，对 this 并没有什么影响：
+
+```javascript
+var adder = {
+  base : 1,
+    
+  add : function(a) {
+    var f = v => v + this.base;
+    return f(a);
+  },
+
+  addThruCall: function(a) {
+    var f = v => v + this.base;
+    var b = {
+      base : 2
+    };
+            
+    return f.call(b, a);
+  }
+};
+
+console.log(adder.add(1));         // 输出 2
+console.log(adder.addThruCall(1)); // 仍然输出 2（而不是3 ——译者注）
+
+```
+**不绑定`arguments`**
+箭头函数不绑定Arguments 对象。因此，在本示例中，参数只是在封闭范围内引用相同的名称：
+
+```javascript
+var arguments = 42;
+var arr = () => arguments;
+
+arr(); // 42
+
+function foo() {
+  var f = (i) => arguments[0]+i;  // 此处的argument为foo的arguments
+  // foo函数的间接参数绑定
+  return f(2);
+}
+
+foo(1); // 3
+```
+
 
 
 
