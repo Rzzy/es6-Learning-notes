@@ -34,23 +34,29 @@ var sampleIterator = {
   index: 0,
   [Symbol.iterator]: function() {
     return this
+  },
   next: function() {
     if (this.index < 3) {
       return {
         done: false,
         value: this.index++
-    } 
-    else {
+      }
+    } else {
       return {
         done: true,
         value: undefined
-        for (var val of sampleIterator) {
-          console.log(val)
-        }
       }
-   }
+    }
   }
-}          
+}
+for (var val of sampleIterator) {
+  console.log(val)
+}
+// 结果为：
+// 0
+// 1
+// 2
+// [Finished in 2.7s]
 ```  
 上面的代码中，当使用 `for…of` 遍历 `sampleIterator` 时，首先调用了该对象的 `[Symool.itirator]` 方法，该方法返回对象本身。而该对象中包含有 `next` 方法，所以该对象本身就是一个 `Iterator `对象。可以供 `for..of `消费。当 `this.index >= 3` 时，返回 `{done: true, value: undefined}`, 循环结束。
 
