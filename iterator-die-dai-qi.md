@@ -96,7 +96,7 @@ for (var val of sampleIterator) {
 * ES6 规定，默认的 `Iterator` 接口就部署在数据结构的 Symbol.iterator 属性。调用该方法，就会得到当前数据结构默认的迭代器生成函数。
 * ES6 中，有三类数据结构原生具备 `Iterator` 接口：数组、类似数组的对象（如 `NodeList` ）、`Set` 和 `Map` 结构。
 
-```javascript
+```javaScript
 let arr = [1, 2, 4]
 // 迭代器接口部署在数组的 `Symbol.iterator` 属性上，调用该属性就可以得到迭代器对象（一个包含 next 函数的对象）
 var iterator = arr[Symbol.iterator]()
