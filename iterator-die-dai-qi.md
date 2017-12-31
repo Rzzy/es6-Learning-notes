@@ -3,7 +3,6 @@
 
 **Symbol.iterator 属性的属性特性：**
 `writable:|false`
- ---------|------
 `enumerable:|false`
 `configurable:|false`
 
