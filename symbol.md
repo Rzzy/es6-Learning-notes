@@ -55,7 +55,7 @@ typeof Symbol()
 这些用途还比较窄，但仅仅通过我文章中的代码很难看到这些新特性产生的重大影响。JavaScript 的 Symbol 是 PHP 和 Python 中 __doubleUnderscores 的改进版本，标准组织将使用它来为语言添加新特性，而不会对已有代码产生影响。
 
 **兼容性**
-对于还没有原生支持 Symbol 的浏览器，你可以使用 polyfill，如 core.js，但该 polyfill 实现并不完美，请阅读注意事项。
+对于还没有原生支持 Symbol 的浏览器，你可以使用 polyfill，如 [core.js](https://github.com/zloirock/core-js#ecmascript-6-symbols)，但该 polyfill 实现并不完美，请阅读[注意事项](https://github.com/zloirock/core-js#caveats-when-using-symbol-polyfill)。
 
 
 
