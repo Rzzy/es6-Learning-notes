@@ -160,7 +160,17 @@ t2Closure('Hello', {foo: 'World'});  // "Hello World!"
 
 ```
 
+**原始字符串**
+在标签函数的第一个参数中，存在一个特殊的属性raw ，我们可以通过它来访问模板字符串的原始字符串。
 
+```javaScript
+function tag(strings, ...values) {
+  console.log(strings.raw[0]); 
+  // "string text line 1 \\n string text line 2"
+}
+
+tag`string text line 1 \n string text line 2`;
+```
 
 
 
