@@ -33,5 +33,6 @@ myIterable[Symbol.iterator] = function* () {
 };
 [...myIterable] // [1, 2, 3]
 ```
+-不符合标准的迭代器-
 
 
