@@ -84,6 +84,101 @@ for (var val of sampleIterator) {
 ```  
 上面的代码中，当使用 `for…of` 遍历 `sampleIterator` 时，首先调用了该对象的 `[Symool.itirator]` 方法，该方法返回对象本身。而该对象中包含有 `next` 方法，所以该对象本身就是一个 `Iterator `对象。可以供 `for..of `消费。当 `this.index >= 3` 时，返回 `{done: true, value: undefined}`, 循环结束。
 
+** 数据结构的默认 `Iterator` 接口**
++ `Iterator` 接口的目的，就是为所有的数据结构提供一种统一的访问机制，即 `for...of` 循环。当使用 `for…of` 循环遍历某种数据结构时，该循环会自动去寻找 `Iterator` 接口。
++ ES6 规定，默认的 `Iterator` 接口就部署在数据结构的 Symbol.iterator 属性。调用该方法，就会得到当前数据结构默认的迭代器生成函数。
++ ES6 中，有三类数据结构原生具备 `Iterator` 接口：数组、类似数组的对象（如 `NodeList` ）、`Set` 和 `Map` 结构。
+
+```javascript
+let arr = [1, 2, 4]
+// 迭代器接口部署在数组的 `Symbol.iterator` 属性上，调用该属性就可以得到迭代器对象（一个包含 next 函数的对象）
+var iterator = arr[Symbol.iterator]()
+console.log(iterator.next())
+console.log(iterator.next())
+console.log(iterator.next())
+console.log(iterator.next())
+// 输出结果：
+// { value: 1, done: false }
+// { value: 2, done: false }
+// { value: 4, done: false }
+// { value: undefined, done: true }
+// [Finished in 2.6s]
+
+```
+类似数组的对象（存在数值键名和 `length` 属性），可以直接在 `Symbol.iterator` 属性上部署数组的 `Iterator` 接口：
+
+```javascript
+let iterable = {
+  0: 'a',
+  1: 'b',
+  2: 'c',
+  3: 'd',
+  length: 4,
+  [Symbol.iterator]: Array.prototype[Symbol.iterator]
+}
+for (var item of iterable) {
+  console.log(item)
+}
+// 输出结果：
+// a
+// b
+// c
+// d
+// [Finished in 2.6 s]
+// 如果 iterable 的 length 属性为 3：
+// a
+// b
+// c
+// [Finished in 2.7s]
+// 如果 iterable 的 length 属性为 5：
+// a
+// b
+// c
+// d
+// undefined
+// [Finished in 2.7s]
+```
+
+>注：普通对象部署数组的 `Symbol.iterator` 方法，并没有效果。如果 `Symbol.iterator` 方法对应的不是遍历器生成函数，解释引擎会报错。
+
+**调用 Iterator 接口的场合**
+除了 `for…of` 循环，还有几个场合会默认调用 `Iterator` 接口（即 `Symbol.iterator`).
+
+1. 解构赋值
+2. 扩展运算符
+3. yield*
+4. 由于数组遍历调用迭代器接口，所以任何接受数组作为参数的场合，其实都调用了 Iterator 接口：
+  + for…of
+  + Array.from()
+  + Map(), Set(), WeakMap(), WeakSet()
+  + Promise.all()
+  + Promise.race()
+  + …
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
