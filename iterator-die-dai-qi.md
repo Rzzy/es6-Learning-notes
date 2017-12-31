@@ -3,12 +3,9 @@
 
 **Symbol.iterator 属性的属性特性：**
 
+属性|属性特性
+----|---
 `writable:` | `false`
+---- | ---
 `enumerable:` | `false`
 `configurable:` | `false`
-
-
-name | age
----- | ---
-LearnShare | 12
-Mike |  32
