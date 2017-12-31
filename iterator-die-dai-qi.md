@@ -57,7 +57,7 @@ nonWellFormedIterable[Symbol.iterator] = () => 1
 
 下面的代码实现了一个简单的迭代器对象：
 
-```javascript
+```javaScript
 var sampleIterator = {
   index: 0,
   [Symbol.iterator]: function() {
