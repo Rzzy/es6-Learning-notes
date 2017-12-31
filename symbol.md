@@ -56,7 +56,26 @@ typeof Symbol()
 
 **案例**
 *一个布尔值引出的问题：*
+有时，把一些属于其他对象的数据暂存在另一个对象中是非常方便的。例如，假设你正在编写一个 `JS` 库，使用 `CSS` 中的 `transition` 来让一个 `DOM `元素在屏幕上飞奔，你已经知道不能同时将多个 `transition` 应用在同一个 `div `上，否则将使得动画非常不美观，你也确实有办法来解决这个问题，但是首先你需要知道该 `div `是否已经在移动中。
 
+怎么解决这个问题呢？
+
+其中一个方法是使用浏览器提供的 API 来探测元素是否处于动画状态，但杀鸡焉用牛刀，在将元素设置为移动时，你的库就知道了该元素正在移动。
+
+你真正需要的是一种机制来跟踪哪些元素正在移动，你可以将正在移动的元素保存在一个数组中，每次要为一个元素设置动画时，首先检查一下这个元素是否已经在这个列表中。
+
+啊哈，但是如果你的数组非常庞大，即便是这样的线性搜索也会产生性能问题。
+
+那么，你真正想做的就是直接在元素上设置一个标志：
+
+```javaScript
+
+if (element.isMoving) {
+  smoothAnimations(element);
+}
+element.isMoving = true;
+
+```
 
 **兼容性**
 对于还没有原生支持 Symbol 的浏览器，你可以使用 polyfill，如 [core.js](https://github.com/zloirock/core-js#ecmascript-6-symbols)，但该 polyfill 实现并不完美，请阅读[注意事项](https://github.com/zloirock/core-js#caveats-when-using-symbol-polyfill)。
