@@ -6,6 +6,5 @@
 属性|属性特性
 ----|---
 `writable:` | `false`
----- | ---
 `enumerable:` | `false`
 `configurable:` | `false`
