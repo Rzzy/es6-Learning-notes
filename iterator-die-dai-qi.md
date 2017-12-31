@@ -8,3 +8,30 @@
 `writable:` | `false`
 `enumerable:` | `false`
 `configurable:` | `false`
+
+**描述**
+>当需要对一个对象进行迭代时（比如开始用于一个for..of循环中），它的@@iterator方法都会在不传参情况下被调用，返回的迭代器用于获取要迭代的值。
+
+一些内置类型拥有默认的迭代器行为，其他类型（如 Object）则没有。下表中的内置类型拥有默认的@@iterator方法：
++ Array.prototype[@@iterator]()
++ TypedArray.prototype[@@iterator]()
++ String.prototype[@@iterator]()
++ Map.prototype[@@iterator]()
++ Set.prototype[@@iterator]()
+
+**示例**
+
+*自定义迭代器*
+我们可以像下面这样创建自定义的迭代器：
+
+```javascript
+var myIterable = {}
+myIterable[Symbol.iterator] = function* () {
+    yield 1;
+    yield 2;
+    yield 3;
+};
+[...myIterable] // [1, 2, 3]
+```
+
+
