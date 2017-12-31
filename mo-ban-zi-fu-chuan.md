@@ -176,8 +176,10 @@ tag`string text line 1 \n string text line 2`;
 ```javaScript
 String.raw`Hi\n${2+3}!`;
 ```
+**浏览器兼容**
 
-
+![](/assets/屏幕快照 2018-01-01 02.44.43.png)
+![](/assets/屏幕快照 2018-01-01 02.45.17.png)
 
 
 
