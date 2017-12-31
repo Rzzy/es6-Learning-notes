@@ -171,6 +171,12 @@ function tag(strings, ...values) {
 
 tag`string text line 1 \n string text line 2`;
 ```
+另外，使用String.raw() 方法创建原始字符串和使用默认模板函数和字符串连接创建是一样的。
+
+```javaScript
+String.raw`Hi\n${2+3}!`;
+```
+
 
 
 
