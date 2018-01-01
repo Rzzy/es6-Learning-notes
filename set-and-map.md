@@ -1,5 +1,6 @@
 ### Set
 > Set 对象允许你存储任何类型的唯一值，无论是原始值或者是对象引用。
+(https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set)[https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set]
 
 **语法**
 
