@@ -159,11 +159,86 @@ inst.prop = 123;
 inst.prop
 //'getter'
 ```
+方法名是可以动态生成的
 
+```javaScript
+class Foo() {
+    myMethod() {}
+}
 
+class Foo() {
+    ['my'+'Method']() {}
+}
 
+const m = 'myMethod';
+class Foo() {
+    [m]() {}
+}
+```
+增加了迭代器的支持，需要给方法前面加一个*
 
+```javaScript
+class IterableArguments {
+    constructor(...args) {
+        this.args = args;
+    }
+    * [Symbol.iterator]() {
+        for (let arg of this.args) {
+            yield arg;
+        }
+    }
+}
 
+for (let x of new IterableArguments('hello', 'world')) {
+    console.log(x);
+}
+
+// hello
+// world
+```
+
+#### Subclassing
+通过`extends`，我们可以继承其它实现`constructor`的函数或对象。需要注意一下，`constructor`与非`constructor`调用父类方法的途径是不同的。
+
+```javaScript
+class Point {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    toString() {
+        return '(' + this.x + ', ' + this.y + ')';
+    }
+}
+
+class ColorPoint extends Point {
+    constructor(x, y, color) {
+        super(x, y); // (A)
+        this.color = color;
+    }
+    toString() {
+        return super.toString() + ' in ' + this.color; // (B)
+    }
+}
+
+let cp = new ColorPoint(25, 8, 'green');
+
+cp.toString()
+'(25, 8) in green'
+
+cp instanceof ColorPoint
+// true
+
+cp instanceof Point
+// true
+```
+子类的原型就是它的父类
+
+```javaScript
+Object.getPrototypeOf(ColorPoint) === Point
+
+// true
+```
 
 
 
