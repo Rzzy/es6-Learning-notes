@@ -139,8 +139,29 @@ mySet.forEach(function(value) {
 
 ```
 
+`Array` 相关
 
+```javaScript
+var myArray = ["value1", "value2", "value3"];
 
+// 用Set构造器将Array转换为Set
+var mySet = new Set(myArray);
+
+mySet.has("value1"); // returns true
+
+// 用...(展开操作符)操作符将Set转换为Array
+console.log([...mySet]); // 与myArray完全一致
+```
+
+`String` 相关
+
+```javaScript
+var text = 'Indiana';
+
+var mySet = new Set(text);  // Set {'I', 'n', 'd', 'i', 'a'}
+mySet.size;  // 5
+
+```
 
 
 
