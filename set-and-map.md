@@ -44,10 +44,39 @@ new Set([iterable]);
 |`Set.prototype.constructor`|返回实例的构造函数。默认情况下是Set|
 |`Set.prototype.size`|返回Set对象的值的个数|
 
-
-
-
 ***方法***
+
+|方法|introduce|
+|---|---|
+|`Set.prototype.add(value)`|在Set对象尾部添加一个元素。返回该Set对象。|
+|`Set.prototype.clear()`|移除Set对象内的所有元素。|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
