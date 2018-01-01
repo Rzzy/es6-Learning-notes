@@ -270,7 +270,31 @@ class Bar extends Foo {
 }
 Bar.classMethod(); // 'hello, too'
 ```
+关于子类中使用构造器，需要注意的是，调用`this`之前，需要调用`super()`
 
+```javaScript
+class Foo {}
+    
+class Bar extends Foo {
+    constructor(num) {
+        let tmp = num * 2; // OK
+        this.num = num; // ReferenceError
+        super();
+        this.num = num; // OK
+    }
+}
+
+```
+`constructors`是可以被显示覆盖(`override`)的。
+
+```javaScript
+class Foo {
+    constructor() {
+        return Object.create(null);
+    }
+}
+console.log(new Foo() instanceof Foo); // false
+```
 
 
 
