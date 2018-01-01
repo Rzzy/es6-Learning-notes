@@ -37,8 +37,9 @@ new Set([iterable]);
 所有`Set`实例继承自 `Set.prototype`。
 
 ***属性***
-ddd|ssss
----|---
+
+ddd|ssss|
+---|---|
 `Set.prototype.constructor`|返回实例的构造函数。默认情况下是Set。
 
 
