@@ -8,4 +8,5 @@
 * [Symbol](symbol.md)
 * [Class](class.md)
 * [Set](set-and-map.md)
+* [Map](map.md)
 
