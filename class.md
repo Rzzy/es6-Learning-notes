@@ -295,6 +295,18 @@ class Foo {
 }
 console.log(new Foo() instanceof Foo); // false
 ```
+如果基类中不显示定义constructor，引擎会生成如下代码
+
+```javaScript
+constructor() {}
+```
+对于子类
+
+```javaScript
+constructor(...args) {
+    super(...args);
+}
+```
 
 
 
