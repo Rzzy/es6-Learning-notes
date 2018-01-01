@@ -290,11 +290,14 @@ class Bar extends Foo {
 ```javaScript
 class Foo {
     constructor() {
-        return Object.create(null);  // Object.create() 方法会使用指定的原型对象及其属性去创建一个新的对象。[Object.create](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
+        return Object.create(null);  
     }
 }
 console.log(new Foo() instanceof Foo); // false
 ```
+> Object.create() 方法会使用指定的原型对象及其属性去创建一个新的对象。
+[Object.create](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
+
 如果基类中不显示定义constructor，引擎会生成如下代码
 
 ```javaScript
