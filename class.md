@@ -290,7 +290,7 @@ class Bar extends Foo {
 ```javaScript
 class Foo {
     constructor() {
-        return Object.create(null);
+        return Object.create(null);  // Object.create() 方法会使用指定的原型对象及其属性去创建一个新的对象。[Object.create](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
     }
 }
 console.log(new Foo() instanceof Foo); // false
