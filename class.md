@@ -350,15 +350,17 @@ let cp = new ColorPoint(25, 8, 'green');
 ```javaScript
 const getProto = Object.getPrototypeOf.bind(Object);
 
-> getProto(Point) === Function.prototype
-true
-> getProto(function () {}) === Function.prototype
-true
+getProto(Point) === Function.prototype
+// true
+
+getProto(function () {}) === Function.prototype
+// true
 
 getProto(Point.prototype) === Object.prototype
-true
+// true
+
 getProto({}) === Object.prototype
-true
+// true
 ```
 
 
