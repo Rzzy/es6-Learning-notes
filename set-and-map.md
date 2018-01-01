@@ -90,6 +90,15 @@ mySet.size; // 4, 刚刚移除一个值
 console.log(mySet); // Set {1, "some text", Object {a: 1, b: 2}, Object {a: 1, b: 2}}
 ```
 
+Set不支持索引
+
+```javaScript
+arr.indexOf('a') !== -1 //慢
+//true
+setOfWords.has('a') //快 
+//true
+```
+
 迭代Set
 
 ```javaScript
