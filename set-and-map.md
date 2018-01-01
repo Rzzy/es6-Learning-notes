@@ -122,7 +122,7 @@ mySet2.size; // 4
 [...mySet2]; // [1,2,3,4]
 
 // intersect can be simulated via 
-var intersection = new Set([...set1].filter(x => set2.has(x)));
+var intersection = new Set([...set1].filter(x => set2.has(x))); // 新的迭代器对象
 
 // difference can be simulated via
 var difference = new Set([...set1].filter(x => !set2.has(x)));
