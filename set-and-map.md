@@ -39,17 +39,13 @@ new Set([iterable]);
 ***属性***
 
 
-|属性||
+|属性|introduce|
 |---|---|
 |`Set.prototype.constructor`|返回实例的构造函数。默认情况下是Set|
+|`Set.prototype.size`|返回Set对象的值的个数|
 
 
 
-`Set.prototype.constructor`
-返回实例的构造函数。默认情况下是Set。
-
-`Set.prototype.size`
-返回Set对象的值的个数。
 
 ***方法***
 
