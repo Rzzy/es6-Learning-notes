@@ -120,7 +120,16 @@ class Foo {
 }
 let foo = new Foo(123);
 ```
+如下图(`[[Prototype]]`代表着继承关系)当对象被`new`出来，拿的是`Foo.prototype : Object`分支，从而可以调`prototype method`
 
+![](/assets/js0401.gif)
+
+`constructor`，这个方法本身，代表了`class`
+
+```javaScript
+Foo === Foo.prototype.constructor
+true
+```
 
 
 
