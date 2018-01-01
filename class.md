@@ -345,6 +345,21 @@ class ColorPoint extends Point {
 let cp = new ColorPoint(25, 8, 'green');
 ```
 
+原型链实现:
+
+```javaScript
+const getProto = Object.getPrototypeOf.bind(Object);
+
+> getProto(Point) === Function.prototype
+true
+> getProto(function () {}) === Function.prototype
+true
+
+getProto(Point.prototype) === Object.prototype
+true
+getProto({}) === Object.prototype
+true
+```
 
 
 
