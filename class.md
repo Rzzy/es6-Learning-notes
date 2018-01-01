@@ -2,7 +2,7 @@
 >转载：[http://www.cnblogs.com/E-WALKER/p/4796278.html](http://www.cnblogs.com/E-WALKER/p/4796278.html)
 
 #### Overview
-借助class 我们可以写出这样的代码:
+借助`class` 我们可以写出这样的代码:
 
 ```javaScript
 class Point {
@@ -32,7 +32,7 @@ console.log(cp instanceof ColorPoint); // true
 console.log(cp instanceof Point); // true
 ```
 #### Base classes
-我们可以定义如下的class:
+我们可以定义如下的`class`:
 
 ```javaScript
 class Point {
@@ -45,14 +45,14 @@ class Point {
     }
 }
 ```
-我们可以像使用ES5标准中的constructor一样实例化class
+我们可以像使用ES5标准中的`constructor`一样实例化`class`
 
 ```javaScript
 var p = new Point(25, 8);
 p.toString();
 // '(25, 8)'
 ```
-实际上，class还是用function实现的，并没有为js创造一个全新的class体系。
+实际上，`class`还是用`function`实现的，并没有为`js`创造一个全新的`class`体系。
 
 ```javaScript
 typeof Point
@@ -64,7 +64,7 @@ typeof Point
 Point()
 TypeError: Classes can’t be function-called
 ```
-另外，它不会像function一样会被hoisted(原因是语义阶段无法解析到extends的内容)
+另外，它不会像`function`一样会被`hoisted`(原因是语义阶段无法解析到extends的内容)
 
 ```javaScript
 foo(); // works, because `foo` is hoisted
@@ -88,7 +88,7 @@ class Bar {}
 functionThatUsesBar(); // OK
 ```
 
-与函数一样，class的定义表达式也有两种，声明形式、表达式形式。之前用的都是声明形式，以下是表达式式的:
+与函数一样，`class`的定义表达式也有两种，声明形式、表达式形式。之前用的都是声明形式，以下是表达式式的:
 
 ```javaScript
 const MyClass = class Me {
@@ -97,10 +97,29 @@ const MyClass = class Me {
     }
 };
 let inst = new MyClass();
+
 console.log(inst.getClassName()); // Me
+
 console.log(Me.name); // ReferenceError: Me is not defined
 ```
+#### Inside the body of a class definition
+`class`定义体是只能包含方法，不能包含属性的(标准定义组织认为原型链中不应包含属性)，属性被写在`constructor`中。
+以下是三种会用到的方法(`constructor` 、`static method`、 `prototype method`)：
 
+```javaScript
+class Foo {
+    constructor(prop) {
+        this.prop = prop;
+    }
+    static staticMethod() {
+        return 'classy';
+    }
+    prototypeMethod() {
+        return 'prototypical';
+    }
+}
+let foo = new Foo(123);
+```
 
 
 
