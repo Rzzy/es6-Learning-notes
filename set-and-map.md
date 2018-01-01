@@ -59,7 +59,36 @@ new Set([iterable]);
 |`Set.prototype[@@iterator]()`|返回一个新的迭代器对象，该对象包含`Set`对象中的按插入顺序排列的所有元素的值。|
 
 
+**示例**
+使用Set对象
 
+```javaScript
+let mySet = new Set();
+
+mySet.add(1); // Set(1) {1}
+mySet.add(5); // Set(2) {1, 5}
+mySet.add(5); // Set { 1, 5 }
+mySet.add("some text"); // Set(3) {1, 5, "some text"}
+var o = {a: 1, b: 2};
+mySet.add(o);
+
+mySet.add({a: 1, b: 2}); // o 指向的是不同的对象，所以没问题
+
+mySet.has(1); // true
+mySet.has(3); // false
+mySet.has(5);              // true
+mySet.has(Math.sqrt(25));  // true
+mySet.has("Some Text".toLowerCase()); // true
+mySet.has(o); // true
+
+mySet.size; // 5
+
+mySet.delete(5);  // true,  从set中移除5
+mySet.has(5);     // false, 5已经被移除
+
+mySet.size; // 4, 刚刚移除一个值
+console.log(mySet); // Set {1, "some text", Object {a: 1, b: 2}, Object {a: 1, b: 2}}
+```
 
 
 
