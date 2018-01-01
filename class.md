@@ -76,6 +76,30 @@ new Foo(); // ReferenceError
 class Foo {}
 ```
 
+```javaScript
+function functionThatUsesBar() {
+    new Bar();
+}
+
+functionThatUsesBar(); // ReferenceError
+
+class Bar {}
+
+functionThatUsesBar(); // OK
+```
+
+与函数一样，class的定义表达式也有两种，声明形式、表达式形式。之前用的都是声明形式，以下是表达式式的:
+
+```javaScript
+const MyClass = class Me {
+    getClassName() {
+        return Me.name;
+    }
+};
+let inst = new MyClass();
+console.log(inst.getClassName()); // Me
+console.log(Me.name); // ReferenceError: Me is not defined
+```
 
 
 
