@@ -254,7 +254,22 @@ class Bar extends Foo {
 
 Bar.classMethod(); // 'hello'
 ```
+`static`方法也是支持调用父类的。
 
+```javaScript
+class Foo {
+    static classMethod() {
+        return 'hello';
+    }
+}
+
+class Bar extends Foo {
+    static classMethod() {
+        return super.classMethod() + ', too';
+    }
+}
+Bar.classMethod(); // 'hello, too'
+```
 
 
 
