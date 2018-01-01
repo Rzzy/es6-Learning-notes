@@ -50,7 +50,7 @@ class Point {
 ```javaScript
 var p = new Point(25, 8);
 p.toString();
-'(25, 8)'
+// '(25, 8)'
 ```
 
 
