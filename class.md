@@ -45,3 +45,36 @@ class Point {
     }
 }
 ```
+我们可以像使用ES5标准中的constructor一样实例化class
+
+```javaScript
+var p = new Point(25, 8);
+p.toString()
+'(25, 8)'
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
