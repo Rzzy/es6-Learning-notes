@@ -310,7 +310,18 @@ constructor(...args) {
     super(...args);
 }
 ```
+#### The details of classes
 
++ 类名不能为eval 或者 arguments，不能有重复的类名，constructor不支持getter,setter。
++ classes不能像函数一样调用。
++ 原型方法不能用作构造器：
+
+```javaScript
+class C {
+    m() {}
+}
+new C.prototype.m(); // TypeError
+```
 
 
 
