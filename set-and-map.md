@@ -25,7 +25,7 @@ new Set([iterable]);
 
 **属性**
 `Set.length`:
-length属性的值为0。
+`length`属性的值为0。
 
 `get Set[@@species]`:
 构造函数用来创建派生对象.
