@@ -52,9 +52,29 @@ var p = new Point(25, 8);
 p.toString();
 // '(25, 8)'
 ```
+实际上，class还是用function实现的，并没有为js创造一个全新的class体系。
 
+```javaScript
+typeof Point
+'function'
+```
+但是，与function相比，它是不能直接调用的，也就是说必须得new出来
 
+```javaScript
+Point()
+TypeError: Classes can’t be function-called
+```
+另外，它不会像function一样会被hoisted(原因是语义阶段无法解析到extends的内容)
 
+```javaScript
+foo(); // works, because `foo` is hoisted
+
+function foo() {}
+
+new Foo(); // ReferenceError
+
+class Foo {}
+```
 
 
 
