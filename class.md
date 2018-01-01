@@ -240,6 +240,21 @@ Object.getPrototypeOf(ColorPoint) === Point
 // true
 ```
 
+所以，static method也被继承了
+
+```javaScript
+class Foo {
+    static classMethod() {
+        return 'hello';
+    }
+}
+
+class Bar extends Foo {
+}
+
+Bar.classMethod(); // 'hello'
+```
+
 
 
 
