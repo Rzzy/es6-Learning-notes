@@ -130,6 +130,16 @@ let foo = new Foo(123);
 Foo === Foo.prototype.constructor
 // true
 ```
+`constructor`有时被称为类构造器。相较于`ES5`，它可以调用父类的`constructor`(使用`super()`)。
+`static methods`,它们归属于类本身，即类方法
+
+```javaScript
+typeof Foo.staticMethod
+'function'
+Foo.staticMethod()
+'classy'
+```
+
 
 
 
