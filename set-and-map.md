@@ -90,7 +90,54 @@ mySet.size; // 4, 刚刚移除一个值
 console.log(mySet); // Set {1, "some text", Object {a: 1, b: 2}, Object {a: 1, b: 2}}
 ```
 
+迭代Set
 
+```javaScript
+// 迭代整个set
+// 按顺序输出：1, "some text" 
+for (let item of mySet) console.log(item);
+
+// 按顺序输出：1, "some text" 
+for (let item of mySet.keys()) console.log(item);
+ 
+// 按顺序输出：1, "some text" 
+for (let item of mySet.values()) console.log(item);
+
+// 按顺序输出：1, "some text" 
+//(键与值相等)
+for (let [key, value] of mySet.entries()) console.log(key);
+
+// 转换Set为Array (with Array comprehensions)
+var myArr = [v for (v of mySet)]; // [1, "some text"]
+// 替代方案(with Array.from)
+var myArr = Array.from(mySet); // [1, "some text"]
+
+// 如果在HTML文档中工作，也可以：
+mySet.add(document.body);
+mySet.has(document.querySelector("body")); // true
+
+// Set 和 Array互换
+mySet2 = new Set([1,2,3,4]);
+mySet2.size; // 4
+[...mySet2]; // [1,2,3,4]
+
+// intersect can be simulated via 
+var intersection = new Set([...set1].filter(x => set2.has(x)));
+
+// difference can be simulated via
+var difference = new Set([...set1].filter(x => !set2.has(x)));
+
+// 用forEach迭代
+mySet.forEach(function(value) {
+  console.log(value);
+});
+
+// 1
+// 2
+// 3
+// 4
+
+```
 
 
 
