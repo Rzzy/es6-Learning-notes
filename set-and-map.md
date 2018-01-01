@@ -23,3 +23,12 @@ new Set([iterable]);
 另外，`NaN`和`undefined`都可以被存储在`Set` 中， `NaN`之间被视为相同的值（尽管 `NaN !== NaN`）。
 
 
+**属性**
+`Set.length`
+length属性的值为0。
+
+`get Set[@@species]`
+构造函数用来创建派生对象.
+
+`Set.prototype`
+表示Set构造器的原型，允许向所有Set对象添加新的属性。
