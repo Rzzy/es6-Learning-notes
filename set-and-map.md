@@ -162,8 +162,8 @@ var mySet = new Set(text);  // Set {'I', 'n', 'd', 'i', 'a'}
 mySet.size;  // 5
 
 ```
-
-
+![](/assets/屏幕快照 2018-01-02 00.35.42.png)
+![](/assets/屏幕快照 2018-01-02 00.35.23.png)
 
 
 
