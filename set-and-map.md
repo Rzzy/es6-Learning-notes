@@ -24,11 +24,11 @@ new Set([iterable]);
 
 
 **属性**
-`Set.length`
+`Set.length`:
 length属性的值为0。
 
-`get Set[@@species]`
+`get Set[@@species]`:
 构造函数用来创建派生对象.
 
-`Set.prototype`
+`Set.prototype`:
 表示Set构造器的原型，允许向所有Set对象添加新的属性。
