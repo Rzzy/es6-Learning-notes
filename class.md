@@ -128,7 +128,7 @@ let foo = new Foo(123);
 
 ```javaScript
 Foo === Foo.prototype.constructor
-true
+// true
 ```
 
 
