@@ -31,3 +31,17 @@ cp.toString(); // '(25, 8) in green'
 console.log(cp instanceof ColorPoint); // true
 console.log(cp instanceof Point); // true
 ```
+#### Base classes
+我们可以定义如下的class:
+
+```javaScript
+class Point {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    toString() {
+        return '(' + this.x + ', ' + this.y + ')';
+    }
+}
+```
