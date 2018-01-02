@@ -175,38 +175,38 @@ c.run();
 <html>
 <body>
 <script type="text/javascript">
-function F(){
-    this.name = "yw";
-    var age = 32;
-    sch = 890;
-}    
-
-var f = new F();  
-alert(f.name);//yw
-alert(f.age);//undefined
-alert(f.sch);//undefined
-F.kr = "gh";
-F.ss = function(){alert(123);}
-alert(f.kr);//undefined
-f.ss();//f.ss is not a function   
-alert(F.prototype.kr);//undefined
-F.prototype.ss();//F.prototype.ss is not a function
-
-
-
-f.a = "a";
-f.y = function(){alert("y");}
-alert(F.a);//undefined
-F.y();//F.y is not a function  
-alert(F.prototype.a);//undefined
-F.prototype.y();//F.prototype.y is not a function
-
-F.prototype.o = "o";
-F.prototype.oo = function(){alert("oo");}
-alert(f.o);//o
-f.oo();//oo
-alert(F.o);//undefined
-F.oo();//F.oo is not a function
+    function F(){
+        this.name = "yw";
+        var age = 32;
+        sch = 890;
+    }    
+    
+    var f = new F();  
+    alert(f.name);//yw
+    alert(f.age);//undefined
+    alert(f.sch);//undefined
+    F.kr = "gh";
+    F.ss = function(){alert(123);}
+    alert(f.kr);//undefined
+    f.ss();//f.ss is not a function   
+    alert(F.prototype.kr);//undefined
+    F.prototype.ss();//F.prototype.ss is not a function
+    
+    
+    
+    f.a = "a";
+    f.y = function(){alert("y");}
+    alert(F.a);//undefined
+    F.y();//F.y is not a function  
+    alert(F.prototype.a);//undefined
+    F.prototype.y();//F.prototype.y is not a function
+    
+    F.prototype.o = "o";
+    F.prototype.oo = function(){alert("oo");}
+    alert(f.o);//o
+    f.oo();//oo
+    alert(F.o);//undefined
+    F.oo();//F.oo is not a function
 </script>
 </body>
 
