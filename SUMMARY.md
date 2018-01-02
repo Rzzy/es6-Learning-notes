@@ -9,4 +9,5 @@
 * [Class](class.md)
 * [Set](set-and-map.md)
 * [Map](map.md)
+* [继承中方法属性的重写](ji-cheng-zhong-fang-fa-shu-xing-de-zhong-xie.md)
 
