@@ -63,7 +63,7 @@ new Map([iterable])
 |`Map.prototype.keys()`|返回一个新的 `Iterator`对象， 它按插入顺序包含了Map对象中每个元素的键 。|
 |`Map.prototype.set(key, value)`|设置Map对象中键的值。返回该Map对象。|
 |`Map.prototype.values()`|返回一个新的`Iterator`对象，它按插入顺序包含了`Map`对象中每个元素的值 。|
-|``||
+|`Map.prototype[@@iterator]()`|返回一个新的`Iterator`对象，它按插入顺序包含了`Map`对象中每个元素的 `[key, value] `数组。|
 
 
 
