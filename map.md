@@ -107,8 +107,60 @@ var otherNaN = Number("foo");
 myMap.get(otherNaN); // "not a number"
 ```
 
+使用`for..of`方法迭代映射
+映射也可以使用`for..of`循环来实现迭代：
 
+```javaScript
+var myMap = new Map();
+myMap.set(0, "zero");
+myMap.set(1, "one");
+for (var [key, value] of myMap) {
+  console.log(key + " = " + value);
+}
+// 将会显示两个log。一个是"0 = zero"另一个是"1 = one"
 
+for (var key of myMap.keys()) {
+  console.log(key);
+}
+// 将会显示两个log。 一个是 "0" 另一个是 "1"
+
+for (var value of myMap.values()) {
+  console.log(value);
+}
+// 将会显示两个log。 一个是 "zero" 另一个是 "one"
+
+for (var [key, value] of myMap.entries()) {
+  console.log(key + " = " + value);
+}
+// 将会显示两个log。 一个是 "0 = zero" 另一个是 "1 = one"
+```
+
+使用forEach()方法迭代映射
+映射也可以通过forEach()方法迭代：
+
+```javaScript
+myMap.forEach(function(value, key) {
+  console.log(key + " = " + value);
+}, myMap)
+// 将会显示两个logs。 一个是 "0 = zero" 另一个是 "1 = one"
+```
+
+映射与数组对象的关系
+
+```javaScript
+var kvArray = [["key1", "value1"], ["key2", "value2"]];
+
+// 使用映射对象常规的构造函数将一个二维键值对数组对象转换成一个映射关系
+var myMap = new Map(kvArray);
+
+myMap.get("key1"); // 返回值为 "value1"
+
+// 使用展开运算符将一个映射关系转换成一个二维键值对数组对象
+console.log(uneval([...myMap])); // 将会向您显示和kvArray相同的数组
+
+// 或者使用展开运算符作用在键或者值的迭代器上，进而得到只含有键或者值得数组
+console.log(uneval([...myMap.keys()])); // 输出 ["key1", "key2"]
+```
 
 
 
