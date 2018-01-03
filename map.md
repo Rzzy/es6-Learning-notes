@@ -2,6 +2,8 @@
 
 > Map 对象保存键值对。任何值\(对象或者原始值\) 都可以作为一个键或一个值。
 
+##### [http://wiki.jikexueyuan.com/project/es6/set-map.html]()
+
 ##### 语法
 
 ```javaScript
