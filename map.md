@@ -94,7 +94,18 @@ myMap.get({});           // undefined, 因为keyObj !== {}
 myMap.get(function() {}) // undefined, 因为keyFunc !== function () {}
 ```
 
+将`NaN`作为映射的键
+`NaN `也可以作为`Map`对象的键. 虽然 `NaN` 和任何值甚至和自己都不相等`(NaN !== NaN 返回true)`, 但下面的例子表明, 两个`NaN`作为`Map`的键来说是没有区别的:
 
+```javaScript
+var myMap = new Map();
+myMap.set(NaN, "not a number");
+
+myMap.get(NaN); // "not a number"
+
+var otherNaN = Number("foo");
+myMap.get(otherNaN); // "not a number"
+```
 
 
 
