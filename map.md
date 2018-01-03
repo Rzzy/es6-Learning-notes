@@ -52,7 +52,18 @@ new Map([iterable])
 |`Map.prototype.constructor`|返回一个函数，它创建了实例的原型。默认是`Map`函数。|
 |`Map.prototype.size`|返回`Map`对象的键/值对的数量。|
 
-
+|方法||
+|-|-|
+|`Map.prototype.clear()`|移除Map对象的所有键/值对 。|
+|`Map.prototype.delete(key)`|移除任何与键相关联的值，并且返回该值，该值在之前会被`Map.prototype.has(key)`返回为`true`。之后再调用`Map.prototype.has(key)`会返回`false`。|
+|`Map.prototype.entries()`|返回一个新的 `Iterator` 对象，它按插入顺序包含了`Map`对象中每个元素的 `[key, value]` 数组。|
+|`Map.prototype.forEach(callbackFn[, thisArg])`|按插入顺序，为 `Map`对象里的每一键值对调用一次`callbackFn`函数。如果为`forEach`提供了`thisArg`，它将在每次回调中作为`this`值。|
+|`Map.prototype.get(key)`|返回键对应的值，如果不存在，则返回`undefined`。|
+|`Map.prototype.has(key)`|返回一个布尔值，表示`Map`实例是否包含键对应的值。|
+|`Map.prototype.keys()`|返回一个新的 `Iterator`对象， 它按插入顺序包含了Map对象中每个元素的键 。|
+|`Map.prototype.set(key, value)`|设置Map对象中键的值。返回该Map对象。|
+|`Map.prototype.values()`|返回一个新的`Iterator`对象，它按插入顺序包含了`Map`对象中每个元素的值 。|
+|``||
 
 
 
